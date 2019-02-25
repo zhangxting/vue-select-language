@@ -5,8 +5,10 @@
         @click.stop="open"
     >
         <div class="v-lang-item v-lang-selected">
-            <i :class="'v-lang-icon-' + currentLang.code"></i>
-            <span class="v-lang-name">{{ currentLang.name }}</span>
+            <i :class="'v-lang-icon-' + currentLang.code" v-if="isWordshow"></i>
+            <span class="v-lang-name" v-if="isWordshow">{{
+                currentLang.name
+            }}</span>
         </div>
 
         <transition name="slide-down">
@@ -22,12 +24,20 @@
                         :target="lang.target || 'self'"
                         v-if="lang.link"
                     >
-                        <i :class="'v-lang-icon-' + lang.code"></i
-                        ><span class="v-lang-name">{{ lang.name }}</span>
+                        <i
+                            :class="'v-lang-icon-' + lang.code"
+                            v-if="isIconShow"
+                        ></i
+                        ><span class="v-lang-name" v-if="isWordshow">{{
+                            lang.name
+                        }}</span>
                     </a>
                     <template v-else>
-                        <i :class="'v-lang-icon-' + lang.code"></i
-                        ><span>{{ lang.name }}</span>
+                        <i
+                            :class="'v-lang-icon-' + lang.code"
+                            v-if="isIconShow"
+                        ></i
+                        ><span v-if="isWordshow">{{ lang.name }}</span>
                     </template>
                 </li>
             </ul>
@@ -53,6 +63,14 @@ export default {
         langs: {
             type: Array,
             required: true
+        },
+        isIconShow: {
+            type: Boolean,
+            default: true
+        },
+        isWordshow: {
+            type: Boolean,
+            default: true
         }
     },
     methods: {
