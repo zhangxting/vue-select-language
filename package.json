@@ -1,13 +1,15 @@
 {
-  "name": "vue-select-language",
+  "name": "@oasis-games/vue-select-language",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vLanguage",
     "lint": "vue-cli-service lint"
   },
+  "main": "dist/vLanguage.umd.min.js",
   "dependencies": {
+    "ismobilejs": "^0.5.1",
     "vue": "^2.6.6"
   },
   "devDependencies": {
@@ -40,6 +42,9 @@
     "plugins": {
       "autoprefixer": {}
     }
+  },
+  "prettier": {
+    "tabWidth": 4
   },
   "browserslist": [
     "> 1%",
