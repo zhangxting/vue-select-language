@@ -13,7 +13,7 @@
                 :class="'flag-icon-' + currentLang.iso_code"
                 v-if="isIconShow"
             ></i>
-            <span class="v-lang-name" v-if="isWordshow">{{
+            <span class="v-lang-name" v-if="isNameShow">{{
                 currentLang.name
             }}</span>
             <span class="arrow" v-if="isArrowshow"></span>
@@ -37,17 +37,20 @@
                             :class="'flag-icon-' + lang.iso_code"
                             v-if="isIconShow"
                         ></i
-                        ><span class="v-lang-name" v-if="isWordshow">{{
+                        ><span class="v-lang-name" v-if="isNameShow">{{
                             lang.name
                         }}</span>
                     </a>
                     <template v-else>
                         <i
                             class="flag-icon v-lang-icon"
-                            :class="'flag-icon-' + lang.iso_code"
+                            :class="[
+                                'flag-icon-' + lang.iso_code,
+                                { 'flag-icon-squared': isSquared }
+                            ]"
                             v-if="isIconShow"
                         ></i
-                        ><span v-if="isWordshow">{{ lang.name }}</span>
+                        ><span v-if="isNameshow">{{ lang.name }}</span>
                     </template>
                 </li>
             </ul>
@@ -84,6 +87,10 @@ export default {
             default: true
         },
         isArrowshow: {
+            type: Boolean,
+            default: true
+        },
+        isSquared: {
             type: Boolean,
             default: true
         }
