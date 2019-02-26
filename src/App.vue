@@ -50,7 +50,7 @@
                             ]"
                             v-if="isIconShow"
                         ></i
-                        ><span v-if="isNameshow">{{ lang.name }}</span>
+                        ><span v-if="isNameShow">{{ lang.name }}</span>
                     </template>
                 </li>
             </ul>
@@ -82,7 +82,7 @@ export default {
             type: Boolean,
             default: true
         },
-        isWordshow: {
+        isNameshow: {
             type: Boolean,
             default: true
         },
@@ -92,7 +92,7 @@ export default {
         },
         isSquared: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     methods: {
@@ -128,6 +128,7 @@ li {
     list-style: none;
     text-decoration: none;
     color: #d1d4d6;
+
     &:hover {
         color: #ffffff;
     }
@@ -173,6 +174,7 @@ li {
         margin: 0;
         padding: 0;
         background: rgba(0, 0, 0, 0.8) center;
+        margin: 2px;
         li {
             font-size: 12px;
             font-weight: normal;
@@ -182,6 +184,7 @@ li {
             display: flex;
             align-items: center;
             padding-left: 4px;
+
             a {
                 display: flex;
                 align-items: center;
