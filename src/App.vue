@@ -150,70 +150,70 @@ li {
             }
         }
     }
-}
-.v-lang-list {
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    z-index: 2;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    background: rgba(0, 0, 0, 0.8) center;
-    li {
-        font-size: 12px;
-        font-weight: normal;
-        line-height: 2;
-        cursor: pointer;
-        color: #d1d4d6;
-        display: flex;
-        align-items: center;
-        padding-left: 4px;
-        a {
+    .v-lang-list {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 2;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        background: rgba(0, 0, 0, 0.8) center;
+        li {
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 2;
+            cursor: pointer;
+            color: #d1d4d6;
             display: flex;
             align-items: center;
+            padding-left: 4px;
+            a {
+                display: flex;
+                align-items: center;
+            }
+            &:hover {
+                color: #ffffff;
+                background: rgba(38, 22, 13, 0.8) center;
+            }
         }
-        &:hover {
-            color: #ffffff;
-            background: rgba(38, 22, 13, 0.8) center;
+    }
+    i {
+        display: inline-block;
+        width: 21px;
+        height: 13px;
+        margin-right: 4px;
+        background: url("assets/lang.png") no-repeat;
+        &.v-lang-icon-en {
+            background-position: 0 0;
         }
-    }
-}
-i {
-    display: inline-block;
-    width: 21px;
-    height: 13px;
-    margin-right: 4px;
-    background: url("assets/lang.png") no-repeat;
-    &.v-lang-icon-en {
-        background-position: 0 0;
-    }
-    &.v-lang-icon-de {
-        background-position: 0 -33px;
-    }
-    &.v-lang-icon-pl {
-        background-position: 0 -65px;
-    }
-    &.v-lang-icon-pt {
-        background-position: 0 -99px;
-    }
-    &.v-lang-icon-nl {
-        background-position: 0 -132px;
-    }
-    &.v-lang-icon-sv {
-        background-position: 0 -163px;
-    }
-    &.v-lang-icon-es {
-        background-position: 0 -193px;
-    }
-    &.v-lang-icon-fr {
-        background-position: 0 -226px;
-    }
-    &.v-lang-icon-tr {
-        background-position: 0 -258px;
-    }
-    &.v-lang-icon-it {
-        background-position: 0 -290px;
+        &.v-lang-icon-de {
+            background-position: 0 -33px;
+        }
+        &.v-lang-icon-pl {
+            background-position: 0 -65px;
+        }
+        &.v-lang-icon-pt {
+            background-position: 0 -99px;
+        }
+        &.v-lang-icon-nl {
+            background-position: 0 -132px;
+        }
+        &.v-lang-icon-sv {
+            background-position: 0 -163px;
+        }
+        &.v-lang-icon-es {
+            background-position: 0 -193px;
+        }
+        &.v-lang-icon-fr {
+            background-position: 0 -226px;
+        }
+        &.v-lang-icon-tr {
+            background-position: 0 -258px;
+        }
+        &.v-lang-icon-it {
+            background-position: 0 -290px;
+        }
     }
 }
 .v-lang-mobile {
