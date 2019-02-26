@@ -5,8 +5,11 @@
         @click.stop="open"
     >
         <div class="v-lang-item v-lang-selected">
-            <i :class="'v-lang-icon-' + currentLang.code"></i>
-            <span class="v-lang-name">{{ currentLang.name }}</span>
+            <i :class="'v-lang-icon-' + currentLang.code" v-if="isWordshow"></i>
+            <span class="v-lang-name" v-if="isWordshow">{{
+                currentLang.name
+            }}</span>
+            <span class="arrow" v-if="isArrowshow"></span>
         </div>
 
         <transition name="slide-down">
@@ -22,12 +25,20 @@
                         :target="lang.target || 'self'"
                         v-if="lang.link"
                     >
-                        <i :class="'v-lang-icon-' + lang.code"></i
-                        ><span class="v-lang-name">{{ lang.name }}</span>
+                        <i
+                            :class="'v-lang-icon-' + lang.code"
+                            v-if="isIconShow"
+                        ></i
+                        ><span class="v-lang-name" v-if="isWordshow">{{
+                            lang.name
+                        }}</span>
                     </a>
                     <template v-else>
-                        <i :class="'v-lang-icon-' + lang.code"></i
-                        ><span>{{ lang.name }}</span>
+                        <i
+                            :class="'v-lang-icon-' + lang.code"
+                            v-if="isIconShow"
+                        ></i
+                        ><span v-if="isWordshow">{{ lang.name }}</span>
                     </template>
                 </li>
             </ul>
@@ -53,6 +64,18 @@ export default {
         langs: {
             type: Array,
             required: true
+        },
+        isIconShow: {
+            type: Boolean,
+            default: true
+        },
+        isWordshow: {
+            type: Boolean,
+            default: true
+        },
+        isArrowshow: {
+            type: Boolean,
+            default: true
         }
     },
     methods: {
@@ -105,6 +128,21 @@ li {
             color: #d1d4d6;
             font-size: 16px;
         }
+        .arrow {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            vertical-align: middle;
+            border-top: 10px dashed;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+            -webkit-transition: -webkit-transform 0.5s;
+            transition: transform 0.5s, -webkit-transform 0.5s;
+        }
+
+
+    }
     }
     .v-lang-list {
         position: absolute;
