@@ -8,7 +8,11 @@
             class="v-lang-item v-lang-selected"
             :class="{ 'v-lang-open': isListShow }"
         >
-            <i :class="'v-lang-icon-' + currentLang.code" v-if="isIconShow"></i>
+            <i
+                class="flag-icon v-lang-icon"
+                :class="'flag-icon-' + currentLang.iso_code"
+                v-if="isIconShow"
+            ></i>
             <span class="v-lang-name" v-if="isWordshow">{{
                 currentLang.name
             }}</span>
@@ -29,7 +33,8 @@
                         v-if="lang.link"
                     >
                         <i
-                            :class="'v-lang-icon-' + lang.code"
+                            class="flag-icon v-lang-icon"
+                            :class="'flag-icon-' + lang.iso_code"
                             v-if="isIconShow"
                         ></i
                         ><span class="v-lang-name" v-if="isWordshow">{{
@@ -38,7 +43,8 @@
                     </a>
                     <template v-else>
                         <i
-                            :class="'v-lang-icon-' + lang.code"
+                            class="flag-icon v-lang-icon"
+                            :class="'flag-icon-' + lang.iso_code"
                             v-if="isIconShow"
                         ></i
                         ><span v-if="isWordshow">{{ lang.name }}</span>
@@ -50,6 +56,7 @@
 </template>
 
 <script>
+import "flag-icon-css/css/flag-icon.min.css";
 import isMobileJs from "ismobilejs";
 export default {
     name: "VLanguage",
@@ -183,37 +190,6 @@ li {
         width: 21px;
         height: 13px;
         margin-right: 4px;
-        background: url("assets/lang.png") no-repeat;
-        &.v-lang-icon-en {
-            background-position: 0 0;
-        }
-        &.v-lang-icon-de {
-            background-position: 0 -33px;
-        }
-        &.v-lang-icon-pl {
-            background-position: 0 -65px;
-        }
-        &.v-lang-icon-pt {
-            background-position: 0 -99px;
-        }
-        &.v-lang-icon-nl {
-            background-position: 0 -132px;
-        }
-        &.v-lang-icon-sv {
-            background-position: 0 -163px;
-        }
-        &.v-lang-icon-es {
-            background-position: 0 -193px;
-        }
-        &.v-lang-icon-fr {
-            background-position: 0 -226px;
-        }
-        &.v-lang-icon-tr {
-            background-position: 0 -258px;
-        }
-        &.v-lang-icon-it {
-            background-position: 0 -290px;
-        }
     }
 }
 .v-lang-mobile {
@@ -232,36 +208,6 @@ li {
         width: 0.315rem;
         height: 0.195rem;
         background-size: 0.315rem 4.545rem;
-        &.v-lang-icon-en {
-            background-position: 0 0;
-        }
-        &.v-lang-icon-de {
-            background-position: 0 -0.495rem;
-        }
-        &.v-lang-icon-pl {
-            background-position: 0 -0.975rem;
-        }
-        &.v-lang-icon-pt {
-            background-position: 0 -1.485rem;
-        }
-        &.v-lang-icon-nl {
-            background-position: 0 -1.98rem;
-        }
-        &.v-lang-icon-sv {
-            background-position: 0 -2.445rem;
-        }
-        &.v-lang-icon-es {
-            background-position: 0 -2.895rem;
-        }
-        &.v-lang-icon-fr {
-            background-position: 0 -3.39rem;
-        }
-        &.v-lang-icon-tr {
-            background-position: 0 -3.87rem;
-        }
-        &.v-lang-icon-it {
-            background-position: 0 -4.35rem;
-        }
     }
 }
 </style>

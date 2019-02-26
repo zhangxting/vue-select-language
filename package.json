@@ -1,13 +1,15 @@
 {
   "name": "@oasis-games/vue-select-language",
-  "version": "0.6.0",
+  "version": "0.9.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vLanguage",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepack": "npm run build"
   },
   "main": "dist/vLanguage.umd.min.js",
   "dependencies": {
+    "flag-icon-css": "^3.3.0",
     "ismobilejs": "^0.5.1"
   },
   "devDependencies": {
