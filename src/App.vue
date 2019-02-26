@@ -8,7 +8,7 @@
             class="v-lang-item v-lang-selected"
             :class="{ 'v-lang-open': isListShow }"
         >
-            <i :class="'v-lang-icon-' + currentLang.code" v-if="isWordshow"></i>
+            <i :class="'v-lang-icon-' + currentLang.code" v-if="isIconShow"></i>
             <span class="v-lang-name" v-if="isWordshow">{{
                 currentLang.name
             }}</span>
