@@ -10,13 +10,16 @@
         >
             <i
                 class="flag-icon v-lang-icon"
-                :class="'flag-icon-' + currentLang.iso_code"
+                :class="[
+                    'flag-icon-' + currentLang.iso_code,
+                    { 'flag-icon-squared': isSquared }
+                ]"
                 v-if="isIconShow"
             ></i>
             <span class="v-lang-name" v-if="isNameShow">{{
                 currentLang.name
             }}</span>
-            <span class="arrow" v-if="isArrowshow"></span>
+            <span class="arrow" v-if="isArrowShow"></span>
         </div>
 
         <transition name="slide-down">
@@ -34,7 +37,10 @@
                     >
                         <i
                             class="flag-icon v-lang-icon"
-                            :class="'flag-icon-' + lang.iso_code"
+                            :class="[
+                                'flag-icon-' + lang.iso_code,
+                                { 'flag-icon-squared': isSquared }
+                            ]"
                             v-if="isIconShow"
                         ></i
                         ><span class="v-lang-name" v-if="isNameShow">{{
@@ -82,11 +88,11 @@ export default {
             type: Boolean,
             default: true
         },
-        isNameshow: {
+        isNameShow: {
             type: Boolean,
             default: true
         },
-        isArrowshow: {
+        isArrowShow: {
             type: Boolean,
             default: true
         },
