@@ -1,22 +1,24 @@
 <template>
     <div
         class="v-lang-wrap"
-        :class="{ 'v-lang-web': !isMobile, 'v-lang-mobile': isMobile }"
+        :class="{
+            'v-lang-web': !isMobile,
+            'v-lang-mobile': isMobile,
+            'v-lang-open': isListShow
+        }"
         @click.stop="toggle"
     >
-        <div
-            class="v-lang-item v-lang-selected"
-            :class="{ 'v-lang-open': isListShow }"
-        >
+        <div class="v-lang-item v-lang-selected">
             <i
                 class="flag-icon v-lang-icon"
                 :class="[
                     'flag-icon-' + currentLang.iso_code,
-                    { 'flag-icon-squared': isSquared }
+                    { 'flag-icon-squared': isSquared },
+                    isIconShow
                 ]"
-                v-if="isIconShow"
+                v-if="isSelectedIconShow"
             ></i>
-            <span class="v-lang-name" v-if="isNameShow">{{
+            <span class="v-lang-name" v-if="isSelectedNameShow">{{
                 currentLang.name
             }}</span>
             <span class="arrow" v-if="isArrowShow"></span>
@@ -78,10 +80,30 @@ export default {
     props: {
         value: {
             type: String,
+            //default: "en"
             required: true
         },
         langs: {
             type: Array,
+            // default() {
+            //     return [
+            //         {
+            //             name: "English",
+            //             code: "en",
+            //             iso_code: "us"
+            //         },
+            //         {
+            //             name: "简体中文",
+            //             code: "zh",
+            //             iso_code: "cn"
+            //         },
+            //         {
+            //             name: "japanese",
+            //             code: "ja",
+            //             iso_code: "jp"
+            //         }
+            //     ];
+            // }
             required: true
         },
         isIconShow: {
@@ -89,6 +111,14 @@ export default {
             default: true
         },
         isNameShow: {
+            type: Boolean,
+            default: true
+        },
+        isSelectedIconShow: {
+            type: Boolean,
+            default: true
+        },
+        isSelectedNameShow: {
             type: Boolean,
             default: true
         },
@@ -142,16 +172,18 @@ li {
 .v-lang-wrap {
     display: inline-flex;
     position: relative;
+    width: 100px;
     .v-lang-selected {
         cursor: pointer;
         display: flex;
         align-items: center;
-        padding-left: 4px;
+        padding: 5px;
+        width: 100%;
+        box-sizing: border-box;
         span {
-            line-height: 20px;
             display: inline-block;
             color: #d1d4d6;
-            font-size: 16px;
+            font-size: 14px;
         }
         .arrow {
             display: inline-block;
@@ -165,11 +197,6 @@ li {
             border-left: 5px solid transparent;
             transition: transform 0.5s;
         }
-        &.v-lang-open {
-            .arrow {
-                transform: rotate(180deg);
-            }
-        }
     }
     .v-lang-list {
         position: absolute;
@@ -180,16 +207,15 @@ li {
         margin: 0;
         padding: 0;
         background: rgba(0, 0, 0, 0.8) center;
-        margin: 2px;
         li {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: normal;
             line-height: 2;
             cursor: pointer;
             color: #d1d4d6;
             display: flex;
             align-items: center;
-            padding-left: 4px;
+            padding: 2px 5px;
 
             a {
                 display: flex;
@@ -203,9 +229,16 @@ li {
     }
     i {
         display: inline-block;
-        width: 21px;
-        height: 13px;
+        width: 20px;
+        height: 15px;
         margin-right: 4px;
+    }
+    &.v-lang-open {
+        background: rgba(0, 0, 0, 0.8);
+        .arrow {
+            border-top-color: #ffffff;
+            transform: rotate(180deg);
+        }
     }
 }
 .v-lang-mobile {
