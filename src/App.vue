@@ -25,7 +25,12 @@
         </div>
 
         <transition name="slide-down">
-            <ul class="v-lang-list" @click.stop v-show="isListShow">
+            <ul
+                class="v-lang-list"
+                @click.stop
+                @touchstart.stop
+                v-show="isListShow"
+            >
                 <li
                     class="v-lang-item"
                     @click="selected(lang)"
@@ -34,7 +39,7 @@
                 >
                     <a
                         :href="lang.url"
-                        :target="lang.target || 'self'"
+                        :target="lang.target || '_self'"
                         v-if="lang.link"
                     >
                         <i
@@ -153,6 +158,16 @@ export default {
         }
     },
     mounted() {
+        if (this.isMobile) {
+            window.addEventListener(
+                "touchstart",
+                () => (this.isListShow = false),
+                {
+                    passive: false
+                }
+            );
+        }
+
         window.addEventListener("click", () => (this.isListShow = false));
     }
 };
