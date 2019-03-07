@@ -7,6 +7,7 @@
             'v-lang-open': isListShow
         }"
         @click.stop="toggle"
+        @touchstart.stop
     >
         <div class="v-lang-item v-lang-selected">
             <i
